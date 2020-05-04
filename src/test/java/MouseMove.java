@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
@@ -39,13 +40,13 @@ public class MouseMove {
         WebElement womenLink = driver.findElement(By.xpath("//a[text()='Women']"));
 
         Actions actions = new Actions(driver);
-        wait.until(ExpectedConditions.visibilityOf(womenLink));
 
         actions.moveToElement(womenLink).perform();
 
         WebElement topLink = driver.findElement(By.xpath("//a[text()='Tops']"));
         wait.until(ExpectedConditions.visibilityOf(topLink));
         actions.moveToElement(topLink).click().perform();
+
 
         WebElement topLabel = driver.findElement(By.xpath("//span[@class='cat-name']"));
         wait.until(ExpectedConditions.visibilityOf(topLabel));
