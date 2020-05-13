@@ -39,7 +39,7 @@ public class NewWindow {
     public void newWindowHandling() {
         driver.findElement(By.linkText("Click Here")).click();
 
-//        waitForSecondWindow();
+        waitForSecondWindow();
 
         Set<String> windows = driver.getWindowHandles();
 
