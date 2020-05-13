@@ -8,7 +8,9 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -46,6 +48,27 @@ public class NewWindow {
         Iterator<String> itr = windows.iterator();
         String parentWindow = itr.next();
         String childWindow = itr.next();
+
+        driver.switchTo().window(childWindow);
+
+        assertEquals(driver.getTitle(), "New Window");
+
+        driver.switchTo().window(parentWindow);
+
+        assertEquals( driver.getTitle(), "The Internet");
+
+    }
+
+    @Test
+    public void newWindowHandlingList() {
+        driver.findElement(By.linkText("Click Here")).click();
+
+        waitForSecondWindow();
+
+        Set<String> windows = driver.getWindowHandles();
+        List<String> winds = new ArrayList<>(windows);
+        String parentWindow = winds.get(0);
+        String childWindow = winds.get(1);
 
         driver.switchTo().window(childWindow);
 
