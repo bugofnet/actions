@@ -9,7 +9,7 @@ jobs:
       MAVEN_OPTS: -Xmx3200m
 
     steps:
-#      - checkout
+      - checkout
 #      - run: mkdir test-results
 
       - run: mvn clean test
