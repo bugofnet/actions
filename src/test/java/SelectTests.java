@@ -34,14 +34,14 @@ public class SelectTests {
         driver.quit();
     }
 
-    @Test
+    @Test (priority = 1)
     public void checkThatSelectedElementHasSymbols(){
         Select select = new Select(driver.findElement(By.id("dropdown")));
         WebElement option = select.getFirstSelectedOption();
         assertEquals("Please select an option", option.getText());
     }
 
-    @Test
+    @Test(priority = 2)
     public void checkSelectByValue(){
         Select select = new Select(driver.findElement(By.id("dropdown")));
         select.selectByValue("1");
@@ -49,7 +49,7 @@ public class SelectTests {
         assertEquals("Option 1", option.getText());
     }
 
-    @Test
+    @Test(priority = 3)
     public void checkSelectByVisibleText(){
         Select select = new Select(driver.findElement(By.id("dropdown")));
         select.selectByVisibleText("Option 1");
@@ -57,7 +57,7 @@ public class SelectTests {
         assertEquals("Option 1", option.getText());
     }
 
-    @Test
+    @Test(priority = 4)
     public void checkSelectByIndex(){
         Select select = new Select(driver.findElement(By.id("dropdown")));
         select.selectByIndex(2);
