@@ -6,6 +6,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -18,6 +20,7 @@ public class SelectTests {
     WebDriver driver;
     WebDriverWait wait;
     final String SITE_URL = "http://the-internet.herokuapp.com/dropdown";
+    private static final Logger LOG = LoggerFactory.getLogger(SelectTests.class);
 
     @BeforeTest
     public void initialization() {
@@ -40,6 +43,7 @@ public class SelectTests {
         Select select = new Select(driver.findElement(By.id("dropdown")));
         WebElement option = select.getFirstSelectedOption();
         assertEquals("Please select an option", option.getText());
+        LOG.info("Test checkThatSelectedElementHasSymbols is done");
     }
 
     @Test(priority = 2)
@@ -48,6 +52,7 @@ public class SelectTests {
         select.selectByValue("1");
         WebElement option = select.getFirstSelectedOption();
         assertEquals("Option 1", option.getText());
+        LOG.info("Test checkSelectByValue is done");
     }
 
     @Test(priority = 3)
@@ -56,6 +61,7 @@ public class SelectTests {
         select.selectByVisibleText("Option 1");
         WebElement option = select.getFirstSelectedOption();
         assertEquals("Option 1", option.getText());
+        LOG.info("Test checkSelectByVisibleText is done");
     }
 
     @Test(priority = 4)
@@ -64,6 +70,7 @@ public class SelectTests {
         select.selectByIndex(2);
         WebElement option = select.getFirstSelectedOption();
         assertEquals("Option 2", option.getText());
+        LOG.info("Test checkSelectByIndex is done");
     }
 
 
